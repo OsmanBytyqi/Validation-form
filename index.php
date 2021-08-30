@@ -24,9 +24,9 @@
 
             <input type="text" name="slug" placeholder="profile slug" id="slug">
             <p>Slug must contain only lowercase letters, numbers and hyphens and be 8 - 20 characters</p>
-            <input type="button" value="sign up" id="submit" name="submit">
+            <!-- <input type="button" value="sign up" id="submit" name="submit"> -->
 
-            <!-- <button type="submit" name="submit" id="submit">Sign up</button> -->
+            <button type="submit" name="submit" id="submit" >Sign up</button>
         </form>
         <div class="correct" style="display:none">Your data has been save</div>
             <div id="error"style="display:none" > something went worong :-)</div>
@@ -36,41 +36,50 @@
         <script>
 
             $(document).ready(function(){
-                $('submit').click(function(event){
+                $('form').submit(function(event){
+                 
 
-                var mydata{
-                  username:$("#username").val();
-                  email:$("#email").val();
-                  password:$("#password").val();
-                  telephone:$("#telephone").val();
-                  slug:$("#slug").val();
-                };
-                 $.ajax({
-                     url:"server.php",
-                     method:"POST",
-                     data:mydata,
+                   
+
+
+                    $.ajax({
+
+                        url:'server.php',
+                        type:'POST',
                        
-                
-                 }).done(function(data){
+                        async:'true',
+                        // datatype:'json',
+                        data:{
+                            surname:$("#surname").val(),
+                            email:$("#email").val(),
+                            password:$("#password").val(),
+                            telephone:$("#telephone").val(),
+                            slug:$("#slug").val()},
 
-                    if(data.error){
-                        $("#error").text(data.error).show();
+                        data:$('form').serialize(),
+                    }).done(function(data){
+                       
+                        if(data.error){
+                        $("#error").show();
+                       
                     }
                     else{
-                        $('.correct').text(data.name).show();
+                        $('.correct').show();
+                        console.log(data);
+                        setTimeout(function(){  
+                               $('.correct').fadeOut("Slow");  
+                          }, 2000);   
                     }
+                    });
 
-
-                 })
-
-
-
-                  event.preventDefault();
-
-                })
-
+                   event.preventDefault();
+                 
+                });
+                       
+ 
             });
 
+           
 
         </script>
 
@@ -81,14 +90,16 @@
                 height:25px;
                 text-align:center;
             }
-
             .correct{
+                box-sizing: border-box;
                 height:25px;
                 width:100%;
-                background-color:green;
+                background-color:#ccc;
                 text-align:center;
+              
                 
             }
+
             </style>
     </body>
 </html>
