@@ -23,6 +23,7 @@ input,button{
     outline: none !important;
 }
 
+
  #submit{
     cursor: pointer;
     color: bisque;
@@ -53,3 +54,20 @@ input.invalid + p{
 }
 
 
+
+
+#error{
+    width:100%;
+    background-color:red;
+    height:25px;
+    text-align:center;
+    font-family: monospace;
+}
+
+.correct{
+    height:25px;
+    width:100%;
+    background-color:green;
+    text-align:center;
+    
+}
