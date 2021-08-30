@@ -33,13 +33,14 @@
 
         <script>
 
-            $(document).ready(function(){
-                $('form').on("submit",function(event){
-                    event.preventDefault();
+            // $(document).ready(function(){
+            //     $('form').on("submit",function(event){
 
-                })
+            //         event.preventDefault();
 
-            });
+            //     })
+
+            // });
         </script>
     </body>
 </html>

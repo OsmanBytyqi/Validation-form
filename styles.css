@@ -1,0 +1,55 @@
+body{
+    font-family: arial;
+    color: #333;
+}
+h1{
+    font-weight: normal;
+    margin: 20px auto;
+    text-align: center;
+}
+form{
+    width: 500px;
+    margin: 20px auto;
+}
+input,button{
+    display: block;
+    padding: 8px 16px;
+    font-size: 2em;
+    margin: 10px auto;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 3px solid #ccc;
+    outline: none !important;
+}
+
+ #submit{
+    cursor: pointer;
+    color: bisque;
+    background-color: rgb(252, 78, 200);
+}
+
+
+input.valid{
+    border-color: #36cc36;
+}
+input.invalid{
+    border-color: rgb(245, 0, 0);
+}
+input + p{
+    font-family: arial;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 10px;
+    color: rgb(255, 0, 0);
+    opacity: 0;
+    height: 0;
+}
+input.invalid + p{
+    opacity: 1;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+
