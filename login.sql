@@ -4,9 +4,10 @@ create database loginform;
 
  create table user(
      id int not null auto_increment,
-     email varchar(30),
+     username varchar(20),
+     email varchar(50),
      password varchar(30),
-     telephone int,
+     telephone varchar(30),
      slug varchar(30),
      primary key(id)
  );
