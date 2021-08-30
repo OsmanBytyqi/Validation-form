@@ -56,7 +56,7 @@
                             telephone:$("#telephone").val(),
                             slug:$("#slug").val()},
 
-                        data:$('form').serialize(),
+                       
                     }).done(function(data){
                        
                         if(data.error){
