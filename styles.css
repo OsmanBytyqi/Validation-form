@@ -21,13 +21,14 @@ input,button{
     border-radius: 10px;
     border: 3px solid #ccc;
     outline: none !important;
+    
 }
 
 
  #submit{
     cursor: pointer;
     color: bisque;
-    background-color: rgb(252, 78, 200);
+    background-color: rgb(27, 123, 248);
 }
 
 

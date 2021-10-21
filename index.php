@@ -4,7 +4,10 @@
         <meta charset="utf-8">
         <title>RegEx Form</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+     
     </head>
     <body>
         <h1>New User Signup</h1>
@@ -24,82 +27,63 @@
 
             <input type="text" name="slug" placeholder="profile slug" id="slug">
             <p>Slug must contain only lowercase letters, numbers and hyphens and be 8 - 20 characters</p>
-            <!-- <input type="button" value="sign up" id="submit" name="submit"> -->
-
-            <button type="submit" name="submit" id="submit" >Sign up</button>
+            <input type="button" name="submit" id="submit"  value="Submit" />  
+            <span id="error_message" class="text-danger"></span>  
+            <span id="success_message" class="text-success"></span>  
         </form>
-        <div class="correct" style="display:none">Your data has been save</div>
-            <div id="error"style="display:none" > something went worong :-)</div>
+      
           
         <script type="text/javascript" src="index.js"></script>
 
         <script>
 
             $(document).ready(function(){
-                $('form').submit(function(event){
-                 
 
-                   
+                $('#submit').click(function(){  
+                    var username = $('#username').val();  
+                    var email = $('#email').val();  
+                    var password = $('#password').val();  
+                    var telephone = $('#telephone').val();  
+                    var slug = $('#slug').val();  
 
+                    if(username=='' || email==""||password==""|| telephone==""||slug==""){
 
-                    $.ajax({
+                        $('#error_message').html("All Fields are required"); 
 
-                        url:'server.php',
-                        type:'POST',
-                       
-                        async:'true',
-                        // datatype:'json',
-                        data:{
-                            surname:$("#surname").val(),
-                            email:$("#email").val(),
-                            password:$("#password").val(),
-                            telephone:$("#telephone").val(),
-                            slug:$("#slug").val()},
+                        setTimeout(() => {
+                            $('#error_message').fadeOut("Slow");  
 
-                       
-                    }).done(function(data){
-                       
-                        if(data.error){
-                        $("#error").show();
-                       
+                            
+                        }, 2000);
                     }
-                    else{
-                        $('.correct').show();
-                        console.log(data);
-                        setTimeout(function(){  
-                               $('.correct').fadeOut("Slow");  
-                          }, 2000);   
-                    }
-                    });
+                   else{
+        
+                    $.ajax({  
+                         url:"server.php",  
+                         method:"POST",  
+                         data:{username:username, email:email,password:password,telephone:telephone,slug:slug},  
+                         success:function(data){  
+                            $("form").trigger("reset");  
+                              $('#success_message').fadeIn().html(data);  
+                              setTimeout(function(){  
+                                   $('#success_message').fadeOut("Slow");  
 
-                   event.preventDefault();
-                 
-                });
-                       
- 
+                              }, 2000);  
+                         }  
+                     
+                    });  
+                  }
+            
+              });  
+
+               
             });
 
            
 
-        </script>
+      </script>
 
-        <style>
-            #error{
-                width:100%;
-                background-color:red;
-                height:25px;
-                text-align:center;
-            }
-            .correct{
-                box-sizing: border-box;
-                height:25px;
-                width:100%;
-                background-color:#ccc;
-                text-align:center;
-              
-                
-            }
-
-            </style>
+       
+            </style> --> 
     </body>
 </html>
